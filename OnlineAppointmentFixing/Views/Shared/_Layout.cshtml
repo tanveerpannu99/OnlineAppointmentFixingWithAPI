@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Online Appointment</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/template/img/favicon.ico" rel="shortcut icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    @*<link rel="stylesheet" href="~/template/css/bootstrap.min.css" />*@
+    <link rel="stylesheet" href="~/template/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/template/css/flaticon.css" />
+    <link rel="stylesheet" href="~/template/css/owl.carousel.css" />
+    <link rel="stylesheet" href="~/template/css/style.css" />
+
+</head>
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header section -->
+    <header class="header-section">
+        <div class="header-warp">
+            <div class="container">
+                <a href="#" class="site-logo">
+
+                    <h3 style="color:white">Online Appointment</h3>
+                </a>
+                <div class="user-panel">
+                    @*<a href="#">Login</a><span>/</span><a href="">Register</a>*@
+                    @Html.Partial("_LoginPartial")
+                </div>
+                <div class="nav-switch">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <ul class="main-menu">
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @Html.Partial("_Admin")
+                    }
+                    @if (User.IsInRole("Manager"))
+                    {
+                        @Html.Partial("_Manager")
+                    }
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container body-content">
+        <div style="margin-top:200px;">
+            @RenderBody()
+        </div>
+    </div>
+    <!-- Footer section -->
+    <footer class="footer-section spad pb-0">
+        <div class="container">
+            <div class="footer-bottom">
+
+                <div class="social">
+                    <a href=""><i class="fa fa-pinterest"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-dribbble"></i></a>
+                    <a href=""><i class="fa fa-behance"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                </div>
+                <ul class="footer-menu">
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @Html.Partial("_Admin")
+                    }
+                    @if (User.IsInRole("Manager"))
+                    {
+                        @Html.Partial("_Manager")
+                    }
+                </ul>
+                <div class="footer-logo">
+                    <a href="#">
+                        <h3 style="color:white">Online Appointment</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer section end -->
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <!--====== Javascripts & Jquery ======-->
+    <script src="~/template/js/jquery-3.2.1.min.js"></script>
+    @*<script src="~/template/js/bootstrap.min.js"></script>*@
+    <script src="~/template/js/owl.carousel.min.js"></script>
+    <script src="~/template/js/circle-progress.min.js"></script>
+    <script src="~/template/js/main.js"></script>
+
+</body>
+</html>
+
